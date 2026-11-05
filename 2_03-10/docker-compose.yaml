@@ -1,17 +1,13 @@
 ---
 services:
   frontend:
-    image: ahmedhatem2k/example-frontend
-    ports:
-      - "5001:5001"
+    image: ahmedhatem2k/example-frontend-proxy
 
   backend:
     image: ahmedhatem2k/example-backend
-    ports:
-      - "8080:8080"
     restart: unless-stopped
     environment:
-      - REQUEST_ORIGIN=http://localhost:5001
+      - REQUEST_ORIGIN=http://localhost
       - REDIS_HOST=redis
       - POSTGRES_HOST=db
       - POSTGRES_USER=postgres
